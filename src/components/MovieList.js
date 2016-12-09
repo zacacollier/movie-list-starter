@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import Movie from './Movie'
 import MovieDetail from './MovieDetail'
-import { Button } from 'react-bootstrap'
-import FontAwesome from 'react-fontawesome'
 export default class MovieList extends Component {
     constructor(props) {
         super(props)
@@ -33,16 +31,6 @@ export default class MovieList extends Component {
                                     <li
                                         className="col-xs-12 col-sm-6 col-md-3 list-group-item text-center movie"
                                     >
-                                        <Button
-                                            bsStyle="danger"
-                                            size="2x"
-                                        >
-                                            <FontAwesome
-                                                name="window-close"
-                                                size="2x"
-                                            >
-                                            </FontAwesome>
-                                        </Button>
                                         <Movie
                                             key={movie.imdbID}
                                             Title={movie.Title}

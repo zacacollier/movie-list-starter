@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import MovieDetail from './MovieDetail'
+import { Button } from 'react-bootstrap'
+import FontAwesome from 'react-fontawesome'
 
 export default class Movie extends Component {
     constructor(props) {
@@ -25,9 +27,20 @@ export default class Movie extends Component {
         return (
             <div onClick={this.handleMovieClick}>
                 <div className="text-center" key={props.imdbID}>
+                <Button
+                    bsStyle="danger"
+                    size="2x"
+                >
+                    <FontAwesome
+                        name="window-close"
+                        size="2x"
+                    >
+                    </FontAwesome>
+                </Button>
                     <img className="center-block img-responsive" alt={props.Title} src={props.Poster}/>
                     <span>{props.Title}</span>
                 </div>
+
                                         <MovieDetail
                                             isOpen={this.state.isOpen}
                                             onRequestClose={this.onRequestClose}
