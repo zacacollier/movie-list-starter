@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Bootstrap from '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import SearchBar from './components/SearchBar'
+import axios from 'axios'
+
 import Movie from './components/Movie'
 import MovieList from './components/MovieList'
 import MovieDetail from './components/MovieDetail'
@@ -36,16 +38,27 @@ export default class App extends Component {
         })
         console.log(suggestions)
     }
+
+    handleMovieListChange = (event) => {
+        console.log(event)
+    }
+
     handleSuggestionSelect = (suggestion) => {
         const newMovies = this.state.movies.concat(suggestion).reduce((acc, prev) => {
             if (prev.Actors) acc.push(prev)
             return acc
         }, [])
-        console.log(newMovies)
         this.setState({
             movies: newMovies
         })
-        localStorage.setItem('movies', JSON.stringify(this.state.movies))
+        /* localStorage.setItem('movies', JSON.stringify(this.state.movies))*/
+        // does the suggestion need to be split into parts?
+
+        /* axios.post('http://localhost:9001/api/movies/', this.state.movies)
+         *                       .then(resp => {
+         *                           console.log(resp)
+         *                       })
+         *                       .catch(err => {console.error(`POST error: ${err}`)})*/
     }
   render() {
     return (
@@ -53,7 +66,6 @@ export default class App extends Component {
             <SearchBar
                 inputProps={this.props.inputProps}
                 onChange={this.handleSearchbarChange}
-                onClick={this.handleSuggestionSelect}
                 movies={this.props.movies}
                 handleSelect={this.handleSuggestionSelect}
             />
@@ -62,6 +74,7 @@ export default class App extends Component {
                 movies={this.state.movies}
                 isOpen={this.props.isOpen}
                 onRequestClose={this.props.onRequestClose}
+                handleChange={this.handleMovieListChange}
             >
             </MovieList>
         </div>
