@@ -26,7 +26,6 @@ export default class Movie extends Component {
         const { props } = this
         return (
             <div onClick={this.handleMovieClick}>
-                <div className="text-center" key={props.imdbID}>
                 <Button
                     bsStyle="danger"
                     size="2x"
@@ -37,6 +36,7 @@ export default class Movie extends Component {
                     >
                     </FontAwesome>
                 </Button>
+                <div className="text-center" key={props.imdbID}>
                     <img className="center-block img-responsive" alt={props.Title} src={props.Poster}/>
                     <span>{props.Title}</span>
                 </div>

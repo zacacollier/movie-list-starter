@@ -51,14 +51,14 @@ export default class App extends Component {
         this.setState({
             movies: newMovies
         })
+        console.log(suggestion)
         /* localStorage.setItem('movies', JSON.stringify(this.state.movies))*/
         // does the suggestion need to be split into parts?
-
-        /* axios.post('http://localhost:9001/api/movies/', this.state.movies)
-         *                       .then(resp => {
-         *                           console.log(resp)
-         *                       })
-         *                       .catch(err => {console.error(`POST error: ${err}`)})*/
+        axios.post('http://localhost:9001/api/movies/', this.state.movies)
+                              .then(resp => {
+                                  console.log(resp)
+                              })
+                              .catch(err => {console.error(`POST error: ${err}`)})
     }
   render() {
     return (
